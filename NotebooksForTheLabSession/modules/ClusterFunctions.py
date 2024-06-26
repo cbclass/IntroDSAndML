@@ -46,7 +46,7 @@ def createClusterFiles():
         
         
         
-def plotClusters(df,model,legend='auto',draw_center=False,annotate_centers=False,save=False,file='file',path='../plots/'):
+def plotClusters(df,model,legend='auto',draw_center=False,annotate_centers=False,save=False,file='file',path='plots/'):
     """
     Function to plot the clusters:
     Parameters:
@@ -75,4 +75,4 @@ def plotClusters(df,model,legend='auto',draw_center=False,annotate_centers=False
                                                arrowstyle = "->"), 
                              bbox=dict(boxstyle ="round", fc ="0.8"))
     if save:
-        plt.savefig('{path}{file}.png',dpi=600)
+        plt.savefig(f'{path}{file}.png',dpi=600)
