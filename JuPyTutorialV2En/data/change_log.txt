@@ -1,4 +1,0 @@
-April 8th 2024: 
-
-=> expanded Example 2 on 03a_InputOutput_Theory.ipynb; added information how to concatenate str and int.
-=> corrected simple typo (knowlegde to knowledge) at the beginning of all self test questions.
