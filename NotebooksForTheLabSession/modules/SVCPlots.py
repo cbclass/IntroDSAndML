@@ -82,3 +82,55 @@ def plotScatterWithLinearHyperplane(df,clf,name,folder="plots/"):
     plt.text(xmin+dx,ymin+dy, fText,horizontalalignment='left', fontsize=10)
     plt.title("The scatter plot wt SVC: " + name)
     fig.savefig(f'{folder}scatterplotHyper_{name}.png', dpi=600)
+
+
+
+def plotDecisionBoundary(clf,X_train,X_test,y_train,y_test,feature1,feature2,
+                         title="The title",filename="plot.png"):
+    """
+    plots the decision boundaries
+    data used for traing a transparent
+    data used for test are not transparent
+    the support vectors are marked with a black dot
+     
+
+    Parameters
+    ----------
+    clf : 
+        the SVM classifier.
+    X_train : 
+        trainings data set (features).
+    X_test : 
+        test data set (features).
+    y_train : 
+        trainings data set (class).
+    y_test : 
+        test data set (class).
+    feature1 : str 
+        name of feature1.
+    feature2 : str
+        name of feature2.
+    title : str
+        title of the plot.
+    filename : str
+        filename to store the plot.
+
+    Returns
+    -------
+    None.
+
+    """
+    
+    plt.figure()
+                                           
+    DecisionBoundaryDisplay.from_estimator(clf,X=X_train,
+                                       response_method="predict",
+                                           cmap=plt.cm.coolwarm,
+                                            alpha=0.4)
+    plt.scatter(X_train[feature1],X_train[feature2],c=y_train,
+                cmap=plt.cm.coolwarm,edgecolors='k',alpha=0.5)
+    plt.scatter(X_test[feature1],X_test[feature2],c=y_test,
+                cmap=plt.cm.coolwarm,edgecolors='k',alpha=1)
+    plt.plot(clf.support_vectors_[:,0],clf.support_vectors_[:,1],'.k')
+    plt.title(title)
+    plt.savefig(filename,dpi=600)
